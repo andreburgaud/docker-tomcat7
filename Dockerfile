@@ -1,5 +1,6 @@
-FROM openjdk:7-jre-alpine
+FROM openjdk:7u151-jre-alpine3.7
 
+ENV VERSION 1.0.0
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
 RUN mkdir -p "$CATALINA_HOME"
@@ -113,6 +114,7 @@ RUN set -eux; \
     apk add --virtual .tomcat-native-rundeps $runDeps; \
     apk del .fetch-deps .native-build-deps; \
     \
+    apk add --no-cache ttf-dejavu; \
 # sh removes env vars it doesn't support (ones with periods)
 # https://github.com/docker-library/tomcat/issues/77
     apk add --no-cache bash; \

@@ -9,10 +9,12 @@ It is based on the Alpine `Dockerfile` for Tomcat 7, tag `jre7-alpine`, and incl
 * JRE 7
 * Tomcat 7
 
+## Differences
 
-## Difference
-
-The difference is that the resulting image does not include any of the default Tomcat `webapps` (`docs`, `examples`, `host-manager`, `manager`, `ROOT`)
+The resulting image exhibit the following differences from `tomcat:7.0.85-jre7-alpine`:
+1. Does not include any of the default Tomcat `webapps` (`docs`, `examples`, `host-manager`, `manager`, `ROOT`)
+1. Attempts to connect to different PGP servers to overcome issue `keyserver receive failed: Address not available`
+1. Includes the font package `ttf-dejavu` to overcome NPE issue such as the one descrived in https://github.com/docker-library/openjdk/issues/73
 
 ## Resources
 
